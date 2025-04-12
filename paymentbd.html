@@ -1,8 +1,9 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nagad Deposit</title>
+  <title>Deposit</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
   <style>
     body {
@@ -108,16 +109,16 @@
   <div class="container">
     <div class="header">
       <div class="time" id="timer">00:10:00</div>
-      <h2>Nagad Deposit</h2>
+      <h2 id="paymentMethodTitle">Deposit</h2>
     </div>
     <div class="amount-box">
-      <h3 id="depositAmount">500 Tk <span class="material-icons-outlined copy-icon" onclick="copyText('depositAmount')">content_copy</span></h3>
+      <h3 id="depositAmount">0 Tk <span class="material-icons-outlined copy-icon" onclick="copyText('depositAmount')">content_copy</span></h3>
       <div style="color:#d32f2f;font-size:0.9rem;">Please do not change the amount</div>
     </div>
     <div class="step">
       <h4>Step 1: Copy the Agent Number</h4>
       <div class="step-box">
-        <span id="agentNumber">01855966005</span>
+        <span id="agentNumber">00000000000</span>
         <span class="material-icons-outlined copy-icon" onclick="copyText('agentNumber')">content_copy</span>
       </div>
     </div>
@@ -127,37 +128,29 @@
       <button onclick="submitTransaction()">Submit Transaction ID</button>
     </div>
     <a href="dashboard.html" class="back-link">Back to Dashboard</a>
-  </div>  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-    import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
-    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+  </div>
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyCwiUR6oJRjTBFa2ajTdb-5Owc_I6Dw2S0",
-      authDomain: "fir-bot-bd5e8.firebaseapp.com",
-      databaseURL: "https://fir-bot-bd5e8-default-rtdb.firebaseio.com",
-      projectId: "fir-bot-bd5e8",
-      storageBucket: "fir-bot-bd5e8.firebasestorage.app",
-      messagingSenderId: "501448994050",
-      appId: "1:501448994050:web:fb1c102dcaeb23bf93261b",
-      measurementId: "G-3ERPTBHN6N"
+  <script>
+    // Method অনুযায়ী নাম্বার লিস্ট
+    const numberMap = {
+      bKash: "01318645435",
+      Nagad: "01855966005",
+      Rocket: "01829261192"
     };
 
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase(app);
-    const auth = getAuth();
+    // LocalStorage থেকে method ও amount নেওয়া
+    const method = localStorage.getItem("depositMethod");
+    const amount = localStorage.getItem("depositAmount");
 
-    let method = localStorage.getItem("method") || "Nagad";
-    let amount = localStorage.getItem("amount") || "500";
-    let numberMap = {
-      Bkash: "+8801318645435",
-      Nagad: "+8801855966005",
-      Rocket: "+8801829261192"
-    };
+    // যদি থাকে তাহলে বসাও
+    if (method && amount) {
+      const number = numberMap[method] || "Not found";
+      document.getElementById("paymentMethodTitle").innerText = `${method} Deposit`;
+      document.getElementById("depositAmount").innerText = `${amount} Tk`;
+      document.getElementById("agentNumber").innerText = number;
+    }
 
-    document.getElementById("depositAmount").innerText = `${amount} Tk`;
-    document.getElementById("agentNumber").innerText = numberMap[method];
-
+    // Copy function
     function copyText(id) {
       const el = document.getElementById(id);
       const temp = document.createElement("textarea");
@@ -167,26 +160,20 @@
       document.execCommand("copy");
       document.body.removeChild(temp);
     }
-    window.copyText = copyText;
 
+    // Transaction Submit (Firebase যুক্ত করতে চাইলে আলাদা করে বলবেন)
     function submitTransaction() {
       const trxid = document.getElementById("trxid").value;
-      if (!trxid) return alert("Please enter transaction ID");
-      onAuthStateChanged(auth, user => {
-        if (user) {
-          const uid = user.uid;
-          set(ref(db, 'deposits/' + uid), {
-            amount: amount,
-            method: method,
-            trxid: trxid,
-            number: numberMap[method],
-            timestamp: Date.now()
-          }).then(() => {
-            window.location.href = "verifypayment.html";
-          });
-        }
-      });
+      if (!trxid) {
+        alert("Please enter Transaction ID");
+        return;
+      }
+      alert("Transaction ID Submitted: " + trxid);
+      // Firebase save করলে এখানে যোগ করতে হবে
     }
+
+    window.copyText = copyText;
     window.submitTransaction = submitTransaction;
-  </script></body>
+  </script>
+</body>
 </html>
