@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Package Not Activated</title>
 
   <!-- Tailwind CSS CDN -->
@@ -19,6 +20,11 @@
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(135deg, #2b2e4a, #1e202c, #0f0c29);
       color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
     }
 
     .card-glass {
@@ -26,35 +32,113 @@
       background: rgba(255, 255, 255, 0.06);
       border: 1px solid rgba(255, 255, 255, 0.12);
       box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+      border-radius: 1rem;
+      padding: 2rem;
+      max-width: 500px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .card-glass img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+      border: 3px solid rgba(255, 255, 255, 0.1);
+      margin-bottom: 1.5rem;
+    }
+
+    .text-rose {
+      color: #f56565;
+    }
+
+    .text-amber {
+      color: #fbbf24;
+    }
+
+    .btn-primary {
+      background-color: #f56565;
+      border: none;
+      color: white;
+      font-weight: 600;
+      padding: 1rem 2rem;
+      border-radius: 9999px;
+      box-shadow: 0 10px 20px rgba(255, 85, 85, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: #e53e3e;
+      box-shadow: 0 12px 25px rgba(255, 85, 85, 0.4);
+      cursor: pointer;
+    }
+
+    .text-2xl {
+      font-size: 1.5rem;
+    }
+
+    .font-semibold {
+      font-weight: 600;
+    }
+
+    .material-icons-outlined {
+      font-size: 2.5rem;
+      color: #f56565;
+    }
+
+    .attention-title {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.875rem;
+      font-weight: 700;
+      color: #f56565;
+      margin-bottom: 1.5rem;
+    }
+
+    .attention-title span {
+      margin-right: 0.5rem;
+    }
+
+    .gif-container {
+      max-width: 150px;
+      margin: 0 auto 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+      border: 2px solid rgba(255, 255, 255, 0.2);
     }
   </style>
 </head>
-<body class="min-h-screen flex items-center justify-center px-4 py-10">
 
-  <div class="card-glass max-w-md w-full rounded-2xl p-6 text-center space-y-6">
-    
-    <div class="flex justify-center">
-      <img src="https://assets.onecompiler.app/43ea4pg72/43emcw2qs/Animation%20-%201744469839327.gif" alt="Warning" class="w-40 h-40 rounded-xl shadow-lg border border-white/20" />
+<body>
+
+  <div class="card-glass">
+    <!-- Premium GIF with border and shadow -->
+    <div class="gif-container">
+      <img src="https://assets.onecompiler.app/43ea4pg72/43emcw2qs/Animation%20-%201744469839327.gif" alt="Warning" class="w-full h-auto rounded-xl"/>
     </div>
 
-    <div class="text-2xl font-bold text-rose-300 flex items-center justify-center gap-2">
-      <span class="material-icons-outlined text-rose-400 text-3xl">lock_outline</span>
-      Attention
+    <!-- Icon & Heading -->
+    <div class="attention-title">
+      <span class="material-icons-outlined">warning</span>
+      <span>Attention</span>
     </div>
 
-    <p class="text-sm text-gray-200 leading-relaxed px-3">
-      You have not activated this <span class="text-rose-400 font-medium">current package</span>.<br>
-      You can <span class="text-amber-300 font-medium">claim</span> it after purchasing.<br>
+    <!-- Text Body -->
+    <p class="text-sm text-gray-200 mb-6 px-4">
+      You have not activated this <span class="font-semibold text-rose-500">current package</span>.<br>
+      You can <span class="font-semibold text-amber-500">claim</span> it after purchasing.<br>
       Please complete your purchase to unlock full access.
     </p>
 
+    <!-- Button -->
     <a href="purchase.html">
-      <button class="bg-rose-500 hover:bg-rose-600 text-white font-semibold py-2 px-6 rounded-full shadow-lg transition-all duration-300">
+      <button class="btn-primary hover:bg-red-600 hover:scale-105">
         Go To Purchase
       </button>
     </a>
-
   </div>
 
 </body>
+
 </html>
