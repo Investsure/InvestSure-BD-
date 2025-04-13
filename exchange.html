@@ -11,7 +11,7 @@
       font-family: 'Noto Sans Bengali', 'Roboto', sans-serif;
       margin: 0;
       padding: 0;
-      background: linear-gradient(to right, #f8fbff, #e0f7fa);
+      background: linear-gradient(to right, #e8f5e9, #ffffff);
       color: #333;
     }
 
@@ -25,47 +25,76 @@
       padding: 20px;
     }
 
-    .icon {
-      font-size: 72px;
-      color: #ff7043;
-      margin-bottom: 20px;
-    }
-
-    h1 {
-      font-size: 28px;
-      margin-bottom: 10px;
-      color: #004d40;
-    }
-
-    p {
-      font-size: 18px;
-      color: #666;
-      max-width: 500px;
-      margin-bottom: 30px;
-    }
-
     .status-box {
-      background: white;
-      border-radius: 16px;
-      padding: 30px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-      transition: all 0.3s ease;
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 40px 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      width: 100%;
+      transition: 0.3s ease;
     }
 
     .status-box:hover {
       transform: scale(1.02);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+    }
+
+    .icon {
+      font-size: 80px;
+      color: #e64a19;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 30px;
+      margin: 0 0 15px;
+      color: #1b5e20;
+    }
+
+    p {
+      font-size: 18px;
+      color: #555;
+      margin-bottom: 30px;
     }
 
     .footer-note {
       font-size: 14px;
-      margin-top: 30px;
-      color: #999;
+      color: #888;
+      margin-top: 20px;
+    }
+
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 20px;
+      font-size: 16px;
+      color: #ffffff;
+      background-color: #00796b;
+      border: none;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .back-button:hover {
+      background-color: #004d40;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .material-icons-outlined {
+      vertical-align: middle;
+      font-size: 22px;
     }
 
     @media (max-width: 600px) {
+      .status-box {
+        padding: 30px 20px;
+      }
+
       h1 {
-        font-size: 22px;
+        font-size: 24px;
       }
 
       p {
@@ -74,10 +103,6 @@
 
       .icon {
         font-size: 60px;
-      }
-
-      .status-box {
-        padding: 25px;
       }
     }
   </style>
@@ -89,6 +114,10 @@
       <div class="icon material-icons-outlined">sync_disabled</div>
       <h1>Exchange is Not Available</h1>
       <p>এই ফিচারটি বর্তমানে উপলব্ধ নয়। আমরা খুব শীঘ্রই এটি চালু করার জন্য কাজ করছি। অনুগ্রহ করে পরে আবার চেষ্টা করুন।</p>
+      <a href="dashboard.html" class="back-button">
+        <span class="material-icons-outlined">arrow_back</span>
+        Back to Dashboard
+      </a>
     </div>
     <div class="footer-note">আপডেটেড তারিখ: <span id="date"></span></div>
   </div>
